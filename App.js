@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Image, Text, View } from 'react-native'
 
 const App = () => {
   return (
@@ -7,12 +7,17 @@ const App = () => {
       <View style={{width: 80, height: 80, backgroundColor: '#0abde3'}} />
       <Text>Muhammad Ikbal</Text>
       <BalComponent />
+      <Photo />
     </View>
   )
 }
 
 const BalComponent = () => {
   return <Text>Bal</Text>
+}
+
+function Photo() {
+  return <Image source={{uri: 'https://placeimg.com/100/100/tech'}} style={{width: 100, height: 100}} />
 }
 
 export default App
