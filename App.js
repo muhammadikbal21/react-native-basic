@@ -1,10 +1,17 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 
 const App = () => {
   return (
-    <Text>Muhammad Ikbal</Text>
+    <View>
+      <Text>Muhammad Ikbal</Text>
+      <BalComponent />
+    </View>
   )
+}
+
+const BalComponent = () => {
+  return <Text>Bal</Text>
 }
 
 export default App
