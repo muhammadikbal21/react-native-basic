@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
-import ProfileYoutubeExample from './ProfileYoutubeExample'
+import ProfileYoutube from '../ProfileYoutube'
 
-class FlexBoxClass extends Component {
+class FlexBox extends Component {
   render() {
     return (
       <View>
@@ -24,10 +24,10 @@ class FlexBoxClass extends Component {
           <View style={{backgroundColor: 'green', flex: 1, height: 100}} />
           <View style={{backgroundColor: 'blue', flex: 1, height: 100}} />
         </View>
-        <ProfileYoutubeExample />
+        <ProfileYoutube />
       </View>
     )
   }
 }
 
-export default FlexBoxClass
+export default FlexBox

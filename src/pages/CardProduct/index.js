@@ -1,8 +1,8 @@
 import React from 'react'
 import { Image, Text, View } from 'react-native'
-import tech from './tech.jpg'
+import tech from '../../assets/images/tech.jpg'
 
-const CardProductExample = () => {
+const CardProduct = () => {
   return (
     <View style={{padding: 12, backgroundColor: '#f2f2f2', width: 212, borderRadius: 8}}>
       <Image source={tech} style={{width: 188, height: 107, borderRadius: 8}} />
@@ -37,4 +37,4 @@ const CardProductExample = () => {
   )
 }
 
-export default CardProductExample
+export default CardProduct

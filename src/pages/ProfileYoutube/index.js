@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, Image} from 'react-native';
 
-class ProfileYoutubeExample extends Component {
+class ProfileYoutube extends Component {
   render() {
     return (
       <View style={{flexDirection: 'row', alignItems: 'center', marginTop: 12}}>
@@ -20,4 +20,4 @@ class ProfileYoutubeExample extends Component {
   }
 }
 
-export default ProfileYoutubeExample;
+export default ProfileYoutube;
