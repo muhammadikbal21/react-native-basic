@@ -1,8 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, Text, View } from 'react-native'
 import tech from '../../assets/images/tech.jpg'
 
 const CardProduct = () => {
+
+  const [price, setPrice] = useState(25)
+
+  // useEffect dijalankan secara berurutan
+  
+  // useEffect(() => {
+  //   console.log("use effect did mount");
+  // }, [])
+  
+  // useEffect(() => {
+  //   console.log("use effect did update");
+  //   setTimeout(() => {
+  //     setPrice(40)
+  //   }, 2_000);
+  // }, [price]) 
+  
+  // lifecycle dalam 1 useEffect
+  useEffect(() => {
+    console.log("use effect did mount");
+    setTimeout(() => {
+      setPrice(40)
+    }, 5_000);
+    return () => {
+      console.log("use effect did update");
+    }
+  }, [price]) // kurung siku ini berfungsi ketika ada perubahan value dia akan ke-trigger
+
   return (
     <View style={{padding: 12, backgroundColor: '#f2f2f2', width: 212, borderRadius: 8}}>
       <Image source={tech} style={{width: 188, height: 107, borderRadius: 8}} />
@@ -15,7 +42,7 @@ const CardProduct = () => {
         color: '#f2994a',
         marginTop: 12
       }}>
-        Rp. 25.000.000
+        Rp. {price}.000.000
       </Text>
       <Text style={{fontSize: 12, fontWeight: '300', marginTop: 12}}>
         Jakarta Selatan

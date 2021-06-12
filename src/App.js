@@ -21,10 +21,12 @@ const App = () => {
       <ScrollView>
         {/* <SampleComponent /> */}
         {/* <StylingComponent /> */}
-        {/* <CardProduct /> */}
+        {
+          isShow && <CardProduct />
+        }
         {
           // jika kondisi true maka akan memanggil component FlexBox
-          isShow && <FlexBox />
+          // isShow && <FlexBox />
         }
         {/* <Position /> */}
       </ScrollView>
