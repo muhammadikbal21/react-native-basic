@@ -5,6 +5,7 @@ import FlexBox from './pages/FlexBox'
 import Position from './pages/Position'
 import Props from './pages/Props'
 import SampleComponent from './pages/SampleComponent'
+import State from './pages/State'
 import StylingComponent from './pages/StylingComponent'
 
 const App = () => {
@@ -30,7 +31,8 @@ const App = () => {
           // isShow && <FlexBox />
         }
         {/* <Position /> */}
-        <Props />
+        {/* <Props /> */}
+        <State />
       </ScrollView>
     </View>
   )
