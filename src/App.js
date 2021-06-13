@@ -4,6 +4,7 @@ import CardProduct from './pages/CardProduct'
 import FlexBox from './pages/FlexBox'
 import Position from './pages/Position'
 import Props from './pages/Props'
+import PropsAndStateIntegration from './pages/PropsAndStateIntegration'
 import SampleComponent from './pages/SampleComponent'
 import State from './pages/State'
 import StylingComponent from './pages/StylingComponent'
@@ -32,7 +33,8 @@ const App = () => {
         }
         {/* <Position /> */}
         {/* <Props /> */}
-        <State />
+        {/* <State /> */}
+        <PropsAndStateIntegration />
       </ScrollView>
     </View>
   )
