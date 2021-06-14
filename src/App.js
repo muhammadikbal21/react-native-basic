@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView, View } from 'react-native'
 import BasicJavascript from './pages/BasicJavascript'
+import CallAPIVanillaJS from './pages/CallAPIVanillaJS'
 import CardProduct from './pages/CardProduct'
 import FlexBox from './pages/FlexBox'
 import Position from './pages/Position'
@@ -38,7 +39,8 @@ const App = () => {
         {/* <State /> */}
         {/* <PropsAndStateIntegration /> */}
         {/* <BasicJavascript /> */}
-        <ReactNativeSvg />
+        {/* <ReactNativeSvg /> */}
+        <CallAPIVanillaJS />
       </ScrollView>
     </View>
   )
