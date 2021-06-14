@@ -6,6 +6,7 @@ import FlexBox from './pages/FlexBox'
 import Position from './pages/Position'
 import Props from './pages/Props'
 import PropsAndStateIntegration from './pages/PropsAndStateIntegration'
+import ReactNativeSvg from './pages/ReactNativeSvg'
 import SampleComponent from './pages/SampleComponent'
 import State from './pages/State'
 import StylingComponent from './pages/StylingComponent'
@@ -36,7 +37,8 @@ const App = () => {
         {/* <Props /> */}
         {/* <State /> */}
         {/* <PropsAndStateIntegration /> */}
-        <BasicJavascript />
+        {/* <BasicJavascript /> */}
+        <ReactNativeSvg />
       </ScrollView>
     </View>
   )
