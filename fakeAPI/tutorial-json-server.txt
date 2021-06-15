@@ -1,0 +1,16 @@
+menggunakan json server sebagai local server API:
+1. npm install -g json-server
+2. buat file db.json di project yang diinginkan dan pastekan code dibawah ini:
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}
+3. jalankan server di cmd, sebelumnya harus masuk ke directory tempat db.json berada. contoh:
+D:
+cd D:\React Native Project\Basic\ReactNativeBasic\fakeAPI
+json-server --watch db.json --port 3004
