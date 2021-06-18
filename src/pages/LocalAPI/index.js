@@ -1,16 +1,16 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'
 
 
-const Item = () => {
+const Item = (props) => {
   return (
     <View style={styles.itemContainer}>
-      <Image source={{uri: 'https://i.pravatar.cc/150?u=fsfdada@pravatar.com'}} style={styles.avatar} />
+      <Image source={{uri: 'https://i.pravatar.cc/150?u=fake@pravatar.com'}} style={styles.avatar} />
       <View style={styles.desc}>
-        <Text style={styles.descName}>Nama</Text>
-        <Text style={styles.descEmail}>email</Text>
-        <Text style={styles.descStack}>stack</Text>
+        <Text style={styles.descName}>{props.name}</Text>
+        <Text style={styles.descEmail}>{props.email}</Text>
+        <Text style={styles.descStack}>{props.stack}</Text>
       </View>
       <Text style={styles.delete}>X</Text>
     </View>
@@ -22,6 +22,11 @@ const LocalAPI = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [stack, setStack] = useState('')
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   const onSubmit = () => {
     const data = {
@@ -38,6 +43,18 @@ const LocalAPI = () => {
       setName('')
       setEmail('')
       setStack('')
+      getData()
+    })
+    .catch(err => {
+      console.log('error: ', err);
+    })
+  }
+
+  const getData = () => {
+    axios.get('http://10.0.2.2:3004/users')
+    .then(res => {
+      console.log('get data API: ', res);
+      setUsers(res.data)
     })
     .catch(err => {
       console.log('error: ', err);
@@ -53,13 +70,11 @@ const LocalAPI = () => {
       <TextInput style={styles.input} placeholder="Stack" value={stack} onChangeText={(value) => setStack(value)} />
       <Button title="Simpan" onPress={onSubmit} />
       <View style={styles.line} />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+      {
+        users.map((user) => {
+          return <Item key={user.id} name={user.name} email={user.email} stack={user.stack} />
+        })
+      }
     </View>
   )
 }

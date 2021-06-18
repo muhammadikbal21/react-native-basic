@@ -4,13 +4,19 @@
       "id": 1,
       "name": "Bal",
       "email": "balebale@gmail.com",
-      "bidang": "Front End"
+      "stack": "Front End"
     },
     {
       "name": "balebale",
       "email": "bal@gmail.com",
       "stack": "SQA",
       "id": 2
+    },
+    {
+      "name": "wkwkaw",
+      "email": "wmwmwm@rma.com",
+      "stack": "sdkada",
+      "id": 3
     }
   ]
 }
