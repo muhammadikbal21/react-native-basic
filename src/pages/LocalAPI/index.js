@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'
 
 
@@ -17,14 +17,28 @@ const Item = () => {
 }
 
 const LocalAPI = () => {
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [stack, setStack] = useState('')
+
+  const onSubmit = () => {
+    const data = {
+      name: name,
+      email: email,
+      stack: stack
+    }
+    console.log('data before send: ', data);
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Local API JSON</Text>
       <Text style={styles.textTitle}>Form Trainee Bootcamp Batch 6</Text>
-      <TextInput style={styles.input} placeholder="Nama Lengkap" />
-      <TextInput style={styles.input} placeholder="Email" />
-      <TextInput style={styles.input} placeholder="Stack" />
-      <Button title="Simpan" />
+      <TextInput style={styles.input} placeholder="Nama Lengkap" value={name} onChangeText={(value) => setName(value)} />
+      <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={(value) => setEmail(value)} />
+      <TextInput style={styles.input} placeholder="Stack" value={stack} onChangeText={(value) => setStack(value)} />
+      <Button title="Simpan" onPress={onSubmit} />
       <View style={styles.line} />
       <Item />
       <Item />
