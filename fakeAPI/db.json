@@ -1,28 +1,16 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    },
-    {
       "name": "Bal",
-      "id": 2
+      "email": "balebale@gmail.com",
+      "bidang": "Front End"
     },
     {
-      "body": "love you",
-      "postId": 2,
-      "id": 3
+      "name": "balebale",
+      "email": "bal@gmail.com",
+      "stack": "SQA",
+      "id": 2
     }
-  ],
-  "profile": {
-    "name": "Bal"
-  }
+  ]
 }

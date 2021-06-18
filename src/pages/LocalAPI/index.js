@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'
 
@@ -29,6 +30,18 @@ const LocalAPI = () => {
       stack: stack
     }
     console.log('data before send: ', data);
+    // IP alias dari emulator
+    // http://localhost:3004/users menjadi http://10.0.2.2:3004/users
+    axios.post('http://10.0.2.2:3004/users', data)
+    .then(res => {
+      console.log('data after send: ', res);
+      setName('')
+      setEmail('')
+      setStack('')
+    })
+    .catch(err => {
+      console.log('error: ', err);
+    })
   }
 
   return (
