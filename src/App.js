@@ -5,6 +5,7 @@ import CallAPIAxios from './pages/CallAPIAxios'
 import CallAPIVanillaJS from './pages/CallAPIVanillaJS'
 import CardProduct from './pages/CardProduct'
 import FlexBox from './pages/FlexBox'
+import LocalAPI from './pages/LocalAPI'
 import Position from './pages/Position'
 import Props from './pages/Props'
 import PropsAndStateIntegration from './pages/PropsAndStateIntegration'
@@ -42,7 +43,8 @@ const App = () => {
         {/* <BasicJavascript /> */}
         {/* <ReactNativeSvg /> */}
         {/* <CallAPIVanillaJS /> */}
-        <CallAPIAxios />
+        {/* <CallAPIAxios /> */}
+        <LocalAPI />
       </ScrollView>
     </View>
   )
