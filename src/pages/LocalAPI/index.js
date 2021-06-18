@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Button, Image, TouchableOpacity, Alert } from 'react-native'
 
 
 const Item = (props) => {
@@ -14,7 +14,9 @@ const Item = (props) => {
         <Text style={styles.descEmail}>{props.email}</Text>
         <Text style={styles.descStack}>{props.stack}</Text>
       </View>
-      <Text style={styles.delete}>X</Text>
+      <TouchableOpacity onPress={props.onDelete}>
+        <Text style={styles.delete}>X</Text>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -57,7 +59,7 @@ const LocalAPI = () => {
     } else if (button === 'Update') {
       axios.put(`http://10.0.2.2:3004/users/${selectedUser.id}`, data)
       .then(res => {
-        console.log('data after send: ', res);
+        console.log('data after update: ', res);
         setName('')
         setEmail('')
         setStack('')
@@ -90,6 +92,18 @@ const LocalAPI = () => {
     setSelectedUser(item)
   }
 
+  const deleteItem = (item) => {
+    console.log(item);
+    axios.delete(`http://10.0.2.2:3004/users/${item.id}`)
+    .then(res => {
+      console.log('delete item: ', res);
+      getData()
+    })
+    .catch(err => {
+      console.log('error: ', err);
+    })
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Local API JSON</Text>
@@ -101,7 +115,29 @@ const LocalAPI = () => {
       <View style={styles.line} />
       {
         users.map((user) => {
-          return <Item key={user.id} name={user.name} email={user.email} stack={user.stack} onPress={() => selectedItem(user)} />
+          return (
+            <Item 
+              key={user.id} 
+              name={user.name} 
+              email={user.email} 
+              stack={user.stack} 
+              onPress={() => selectedItem(user)}
+              onDelete={() => Alert.alert(
+                'Peringatan',
+                'Anda yakin akan menghapus user ini?',
+                [
+                  {
+                    text: 'Tidak',
+                    onPress: () => console.log('button tidak')
+                  },
+                  {
+                    text: 'Ya',
+                    onPress: () => deleteItem(user)
+                  }
+                ]
+              )}
+            />
+          )
         })
       }
     </View>
