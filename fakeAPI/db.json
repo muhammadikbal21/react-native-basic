@@ -1,20 +1,20 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Bal",
-      "email": "balebale@gmail.com",
-      "stack": "Front End"
+      "name": "Muhammad Ikbal",
+      "email": "muhammadikbal21@gmail.com",
+      "stack": "Front End",
+      "id": 1
     },
     {
       "name": "balebale",
-      "email": "bal@gmail.com",
+      "email": "balebale@gmail.com",
       "stack": "SQA",
       "id": 2
     },
     {
       "name": "wkwkaw",
-      "email": "wmwmwm@rma.com",
+      "email": "hahaha@rma.com",
       "stack": "sdkada",
       "id": 3
     }

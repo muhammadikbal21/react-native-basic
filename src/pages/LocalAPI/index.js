@@ -1,12 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Button, Image, TouchableOpacity } from 'react-native'
 
 
 const Item = (props) => {
   return (
     <View style={styles.itemContainer}>
-      <Image source={{uri: 'https://i.pravatar.cc/150?u=fake@pravatar.com'}} style={styles.avatar} />
+      <TouchableOpacity onPress={props.onPress}>
+        <Image source={{uri: `https://i.pravatar.cc/150?u=${props.email}`}} style={styles.avatar} />
+      </TouchableOpacity>
       <View style={styles.desc}>
         <Text style={styles.descName}>{props.name}</Text>
         <Text style={styles.descEmail}>{props.email}</Text>
@@ -23,6 +25,8 @@ const LocalAPI = () => {
   const [email, setEmail] = useState('')
   const [stack, setStack] = useState('')
   const [users, setUsers] = useState([])
+  const [button, setButton] = useState('Simpan')
+  const [selectedUser, setSelectedUser] = useState({})
 
   useEffect(() => {
     getData()
@@ -37,17 +41,33 @@ const LocalAPI = () => {
     console.log('data before send: ', data);
     // IP alias dari emulator
     // http://localhost:3004/users menjadi http://10.0.2.2:3004/users
-    axios.post('http://10.0.2.2:3004/users', data)
-    .then(res => {
-      console.log('data after send: ', res);
-      setName('')
-      setEmail('')
-      setStack('')
-      getData()
-    })
-    .catch(err => {
-      console.log('error: ', err);
-    })
+
+    if (button === 'Simpan') {
+      axios.post('http://10.0.2.2:3004/users', data)
+      .then(res => {
+        console.log('data after send: ', res);
+        setName('')
+        setEmail('')
+        setStack('')
+        getData()
+      })
+      .catch(err => {
+        console.log('error: ', err);
+      })
+    } else if (button === 'Update') {
+      axios.put(`http://10.0.2.2:3004/users/${selectedUser.id}`, data)
+      .then(res => {
+        console.log('data after send: ', res);
+        setName('')
+        setEmail('')
+        setStack('')
+        getData()
+        setButton('Simpan')
+      })
+      .catch(err => {
+        console.log('error: ', err);
+      })
+    }
   }
 
   const getData = () => {
@@ -61,6 +81,15 @@ const LocalAPI = () => {
     })
   }
 
+  const selectedItem = (item) => {
+    console.log('selected item: ', item);
+    setName(item.name)
+    setEmail(item.email)
+    setStack(item.stack)
+    setButton('Update')
+    setSelectedUser(item)
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Local API JSON</Text>
@@ -68,11 +97,11 @@ const LocalAPI = () => {
       <TextInput style={styles.input} placeholder="Nama Lengkap" value={name} onChangeText={(value) => setName(value)} />
       <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={(value) => setEmail(value)} />
       <TextInput style={styles.input} placeholder="Stack" value={stack} onChangeText={(value) => setStack(value)} />
-      <Button title="Simpan" onPress={onSubmit} />
+      <Button title={button} onPress={onSubmit} />
       <View style={styles.line} />
       {
         users.map((user) => {
-          return <Item key={user.id} name={user.name} email={user.email} stack={user.stack} />
+          return <Item key={user.id} name={user.name} email={user.email} stack={user.stack} onPress={() => selectedItem(user)} />
         })
       }
     </View>
